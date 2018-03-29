@@ -9,26 +9,35 @@
         android:layout_width="match_parent"
         android:layout_weight="1"
         android:layout_height="0dp">
+
         <ImageButton
             android:id="@+id/btn_cancel"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_alignParentLeft="true"
-            android:background="@drawable/ic_launcher_background"
-            android:layout_marginLeft="10dp" />
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignBottom="@+id/btn_ok"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="11dp"
+            android:background="@drawable/button_selector"
+            android:scaleType="centerCrop"
+            android:onClick="clk_cancel"
+            android:src="@drawable/cancel" />
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Income"
             android:layout_marginLeft="100dp"
             android:id="@+id/btn_income"/>
+
         <ImageButton
             android:id="@+id/btn_ok"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:layout_alignParentRight="true"
-            android:background="@drawable/ic_launcher_background"
-            android:layout_marginRight="10dp" />
+            android:layout_marginRight="10dp"
+            android:background="@drawable/button_selector"
+            android:scaleType="centerCrop"
+            android:onClick="clk_ok"
+            android:src="@drawable/ok" />
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -47,19 +56,22 @@
             android:id="@+id/btn_selected"
             android:layout_width="75dp"
             android:layout_height="70dp"
-            android:layout_alignParentLeft="true"
-            android:scaleType="fitCenter"
-            android:layout_margin="10dp"
-            android:background="@drawable/ic_launcher_background" />
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="12dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/salary_sel" />
+
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="0"
-            android:layout_alignParentRight="true"
-            android:textSize="40sp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
             android:digits="1234567890."
             android:singleLine="true"
-            android:textColor="#000000"/>
+            android:text="0"
+            android:textColor="#000000"
+            android:textSize="40sp" />
     </RelativeLayout>
 
     <LinearLayout
@@ -68,34 +80,37 @@
         android:layout_height="0dp"
         android:orientation="horizontal">
         <ImageButton
-            android:id="@+id/btn_food"
+            android:id="@+id/btn_salary"
             android:layout_width="0dp"
             android:layout_height="70dp"
             android:layout_weight="1"
-            android:scaleType="fitCenter"
+            android:scaleType="centerCrop"
             android:layout_margin="10dp"
-            android:background="@drawable/ic_launcher_background" />
+            android:src="@drawable/salary_sel" />
         <ImageButton
-            android:id="@+id/btn_traffic"
+            android:id="@+id/btn_lend"
             android:layout_width="0dp"
             android:layout_height="70dp"
             android:layout_weight="1"
             android:layout_margin="10dp"
-            android:background="@drawable/ic_launcher_background" />
+            android:scaleType="centerCrop"
+            android:src="@drawable/lend_money_unsel"/>
         <ImageButton
-            android:id="@+id/btn_drink"
+            android:id="@+id/btn_red"
             android:layout_width="0dp"
             android:layout_height="70dp"
             android:layout_weight="1"
             android:layout_margin="10dp"
-            android:background="@drawable/ic_launcher_background" />
+            android:scaleType="centerCrop"
+            android:src="@drawable/red_envelope_unsel"/>
         <ImageButton
-            android:id="@+id/btn_daily_necessities"
+            android:id="@+id/btn_pocket_money"
             android:layout_width="0dp"
             android:layout_height="70dp"
             android:layout_weight="1"
             android:layout_margin="10dp"
-            android:background="@drawable/ic_launcher_background" />
+            android:scaleType="centerCrop"
+            android:src="@drawable/pocket_money_unsel"/>
     </LinearLayout>
 
     <LinearLayout
@@ -104,71 +119,45 @@
         android:layout_height="0dp"
         android:orientation="horizontal">
         <ImageButton
-            android:id="@+id/btn_cloth"
+            android:id="@+id/btn_lottery_ticket"
             android:layout_width="0dp"
             android:layout_height="70dp"
             android:layout_weight="1"
-            android:scaleType="fitCenter"
             android:layout_margin="10dp"
-            android:background="@drawable/ic_launcher_background" />
+            android:scaleType="centerCrop"
+            android:src="@drawable/lottery_ticket_unsel"/>
         <ImageButton
             android:id="@+id/btn_red_envelope"
             android:layout_width="0dp"
             android:layout_height="70dp"
             android:layout_weight="1"
             android:layout_margin="10dp"
-            android:background="@drawable/ic_launcher_background" />
+            android:scaleType="centerCrop"
+            android:background="@android:color/white"/>
         <ImageButton
             android:id="@+id/btn_phone_top_up"
             android:layout_width="0dp"
             android:layout_height="70dp"
             android:layout_weight="1"
             android:layout_margin="10dp"
-            android:background="@drawable/ic_launcher_background" />
+            android:scaleType="centerCrop"
+            android:background="@android:color/white"/>
         <ImageButton
             android:id="@+id/btn_recreation"
             android:layout_width="0dp"
             android:layout_height="70dp"
             android:layout_weight="1"
             android:layout_margin="10dp"
-            android:background="@drawable/ic_launcher_background" />
+            android:background="@android:color/white"/>
     </LinearLayout>
+
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_weight="2"
         android:layout_height="0dp"
         android:orientation="horizontal">
-        <ImageButton
-            android:id="@+id/btn_treatment"
-            android:layout_width="0dp"
-            android:layout_height="70dp"
-            android:layout_weight="1"
-            android:scaleType="fitCenter"
-            android:layout_margin="10dp"
-            android:background="@drawable/ic_launcher_background" />
-        <ImageButton
-            android:id="@+id/btn_stationery"
-            android:layout_width="0dp"
-            android:layout_height="70dp"
-            android:layout_weight="1"
-            android:layout_margin="10dp"
-            android:background="@drawable/ic_launcher_background" />
-        <ImageButton
-            android:id="@+id/btn_book"
-            android:layout_width="0dp"
-            android:layout_height="70dp"
-            android:layout_weight="1"
-            android:layout_margin="10dp"
-            android:background="@drawable/ic_launcher_background" />
-        <ImageButton
-            android:id="@+id/btn_tution"
-            android:layout_width="0dp"
-            android:layout_height="70dp"
-            android:layout_weight="1"
-            android:layout_margin="10dp"
-            android:background="@drawable/ic_launcher_background" />
-    </LinearLayout>
 
+    </LinearLayout>
 
 </LinearLayout>

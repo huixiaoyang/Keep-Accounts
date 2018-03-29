@@ -18,6 +18,17 @@ public class AddIncomeRecordsActivity extends AppCompatActivity{
     }
     public void btnAddSpendingRecords(View view) {
         //to do when the button is clicked
-        startActivity(new Intent(AddIncomeRecordsActivity.this, AddSpendingRecordsActivity.class));
+        Intent itent=new Intent();
+        itent.setClass(AddIncomeRecordsActivity.this, AddSpendingRecordsActivity.class);
+        startActivity(itent);
+        AddIncomeRecordsActivity.this.finish();
+    }
+
+    public void clk_cancel(View view){
+        AddIncomeRecordsActivity.this.finish();
+    }
+    public void clk_ok(View view){
+        //add to the database, then close this activity
+        AddIncomeRecordsActivity.this.finish();
     }
 }
