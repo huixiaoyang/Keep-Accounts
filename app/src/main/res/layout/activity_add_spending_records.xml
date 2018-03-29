@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:layout_height="0dp">
+        <ImageButton
+            android:id="@+id/btn_cancel"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentLeft="true"
+            android:background="@drawable/ic_launcher_background"
+            android:layout_marginLeft="10dp" />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Income"
+            android:layout_marginLeft="100dp"
+            android:id="@+id/btn_income"
+            android:onClick="btnAddIncomeRecords"/>
+        <ImageButton
+            android:id="@+id/btn_ok"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/ic_launcher_background"
+            android:layout_marginRight="10dp" />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/btn_income"
+            android:text="Spending"
+            android:id="@+id/btn_spending"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_weight="2"
+        android:layout_height="0dp">
+
+        <ImageButton
+            android:id="@+id/btn_selected"
+            android:layout_width="75dp"
+            android:layout_height="70dp"
+            android:layout_alignParentLeft="true"
+            android:scaleType="fitCenter"
+            android:layout_margin="10dp"
+            android:background="@drawable/ic_launcher_background" />
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="0"
+            android:layout_alignParentRight="true"
+            android:textSize="40sp"
+            android:digits="1234567890."
+            android:singleLine="true"
+            android:textColor="#000000"/>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_weight="2"
+        android:layout_height="0dp"
+        android:orientation="horizontal">
+        <ImageButton
+            android:id="@+id/btn_food"
+            android:layout_width="0dp"
+            android:layout_height="70dp"
+            android:layout_weight="1"
+            android:scaleType="fitCenter"
+            android:layout_margin="10dp"
+            android:background="@drawable/ic_launcher_background" />
+        <ImageButton
+            android:id="@+id/btn_traffic"
+            android:layout_width="0dp"
+            android:layout_height="70dp"
+            android:layout_weight="1"
+            android:layout_margin="10dp"
+            android:background="@drawable/ic_launcher_background" />
+        <ImageButton
+            android:id="@+id/btn_drink"
+            android:layout_width="0dp"
+            android:layout_height="70dp"
+            android:layout_weight="1"
+            android:layout_margin="10dp"
+            android:background="@drawable/ic_launcher_background" />
+        <ImageButton
+            android:id="@+id/btn_daily_necessities"
+            android:layout_width="0dp"
+            android:layout_height="70dp"
+            android:layout_weight="1"
+            android:layout_margin="10dp"
+            android:background="@drawable/ic_launcher_background" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_weight="2"
+        android:layout_height="0dp"
+        android:orientation="horizontal">
+        <ImageButton
+            android:id="@+id/btn_cloth"
+            android:layout_width="0dp"
+            android:layout_height="70dp"
+            android:layout_weight="1"
+            android:scaleType="fitCenter"
+            android:layout_margin="10dp"
+            android:background="@drawable/ic_launcher_background" />
+        <ImageButton
+            android:id="@+id/btn_red_envelope"
+            android:layout_width="0dp"
+            android:layout_height="70dp"
+            android:layout_weight="1"
+            android:layout_margin="10dp"
+            android:background="@drawable/ic_launcher_background" />
+        <ImageButton
+            android:id="@+id/btn_phone_top_up"
+            android:layout_width="0dp"
+            android:layout_height="70dp"
+            android:layout_weight="1"
+            android:layout_margin="10dp"
+            android:background="@drawable/ic_launcher_background" />
+        <ImageButton
+            android:id="@+id/btn_recreation"
+            android:layout_width="0dp"
+            android:layout_height="70dp"
+            android:layout_weight="1"
+            android:layout_margin="10dp"
+            android:background="@drawable/ic_launcher_background" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_weight="2"
+        android:layout_height="0dp"
+        android:orientation="horizontal">
+        <ImageButton
+            android:id="@+id/btn_treatment"
+            android:layout_width="0dp"
+            android:layout_height="70dp"
+            android:layout_weight="1"
+            android:scaleType="fitCenter"
+            android:layout_margin="10dp"
+            android:background="@drawable/ic_launcher_background" />
+        <ImageButton
+            android:id="@+id/btn_stationery"
+            android:layout_width="0dp"
+            android:layout_height="70dp"
+            android:layout_weight="1"
+            android:layout_margin="10dp"
+            android:background="@drawable/ic_launcher_background" />
+        <ImageButton
+            android:id="@+id/btn_book"
+            android:layout_width="0dp"
+            android:layout_height="70dp"
+            android:layout_weight="1"
+            android:layout_margin="10dp"
+            android:background="@drawable/ic_launcher_background" />
+        <ImageButton
+            android:id="@+id/btn_tution"
+            android:layout_width="0dp"
+            android:layout_height="70dp"
+            android:layout_weight="1"
+            android:layout_margin="10dp"
+            android:background="@drawable/ic_launcher_background" />
+    </LinearLayout>
+
+
+</LinearLayout>
