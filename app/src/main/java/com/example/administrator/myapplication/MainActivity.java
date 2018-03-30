@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
         for (int i = 0; i < 20; i++){
             Map<String, Object>map = new HashMap<String, Object>();
             map.put("text_date", "2018\3\29 Thurday");
-            map.put("image_type", R.drawable.ic_launcher_background);
+            map.put("image_type", R.drawable.food_sel);
             map.put("text_type", "food"+i);
             map.put("text_type_detail", "detail"+i);
             map.put("text_money", "10"+i);

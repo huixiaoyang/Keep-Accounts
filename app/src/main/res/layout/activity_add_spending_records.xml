@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -9,13 +10,18 @@
         android:layout_width="match_parent"
         android:layout_weight="1"
         android:layout_height="0dp">
+
         <ImageButton
             android:id="@+id/btn_cancel"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_alignParentLeft="true"
-            android:background="@drawable/ic_launcher_background"
-            android:layout_marginLeft="10dp" />
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignBottom="@+id/btn_ok"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="11dp"
+            android:background="@drawable/button_selector"
+            android:scaleType="centerCrop"
+            android:onClick="clk_cancel"
+            android:src="@drawable/cancel" />
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -23,13 +29,17 @@
             android:layout_marginLeft="100dp"
             android:id="@+id/btn_income"
             android:onClick="btnAddIncomeRecords"/>
+
         <ImageButton
             android:id="@+id/btn_ok"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:layout_alignParentRight="true"
-            android:background="@drawable/ic_launcher_background"
-            android:layout_marginRight="10dp" />
+            android:layout_marginRight="10dp"
+            android:background="@drawable/button_selector"
+            android:scaleType="centerCrop"
+            android:onClick="clk_ok"
+            android:src="@drawable/ok" />
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -48,9 +58,9 @@
             android:layout_width="75dp"
             android:layout_height="70dp"
             android:layout_alignParentLeft="true"
-            android:scaleType="fitCenter"
+            android:scaleType="centerCrop"
             android:layout_margin="10dp"
-            android:background="@drawable/ic_launcher_background" />
+            android:src="@drawable/food_sel"/>
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
@@ -72,30 +82,33 @@
             android:layout_width="0dp"
             android:layout_height="70dp"
             android:layout_weight="1"
-            android:scaleType="fitCenter"
+            android:scaleType="centerCrop"
             android:layout_margin="10dp"
-            android:background="@drawable/ic_launcher_background" />
+            android:src="@drawable/food_sel" />
         <ImageButton
             android:id="@+id/btn_traffic"
             android:layout_width="0dp"
             android:layout_height="70dp"
             android:layout_weight="1"
             android:layout_margin="10dp"
-            android:background="@drawable/ic_launcher_background" />
+            android:scaleType="centerCrop"
+            android:src="@drawable/traffic_unsel"/>
         <ImageButton
             android:id="@+id/btn_drink"
             android:layout_width="0dp"
             android:layout_height="70dp"
             android:layout_weight="1"
             android:layout_margin="10dp"
-            android:background="@drawable/ic_launcher_background" />
+            android:scaleType="centerCrop"
+            android:src="@drawable/drink_unsel"/>
         <ImageButton
             android:id="@+id/btn_daily_necessities"
             android:layout_width="0dp"
             android:layout_height="70dp"
             android:layout_weight="1"
             android:layout_margin="10dp"
-            android:background="@drawable/ic_launcher_background" />
+            android:scaleType="centerCrop"
+            android:src="@drawable/daily_unsel"/>
     </LinearLayout>
 
     <LinearLayout
@@ -108,30 +121,34 @@
             android:layout_width="0dp"
             android:layout_height="70dp"
             android:layout_weight="1"
-            android:scaleType="fitCenter"
             android:layout_margin="10dp"
-            android:background="@drawable/ic_launcher_background" />
+            android:scaleType="centerCrop"
+            android:src="@drawable/cloth_unsel"/>
         <ImageButton
             android:id="@+id/btn_red_envelope"
             android:layout_width="0dp"
             android:layout_height="70dp"
             android:layout_weight="1"
             android:layout_margin="10dp"
-            android:background="@drawable/ic_launcher_background" />
+            android:scaleType="centerCrop"
+            android:src="@drawable/red_envelope_unsel" />
         <ImageButton
             android:id="@+id/btn_phone_top_up"
             android:layout_width="0dp"
             android:layout_height="70dp"
             android:layout_weight="1"
             android:layout_margin="10dp"
-            android:background="@drawable/ic_launcher_background" />
+            android:scaleType="centerCrop"
+            android:src="@drawable/top_up_unsel"/>
+
         <ImageButton
             android:id="@+id/btn_recreation"
             android:layout_width="0dp"
             android:layout_height="70dp"
-            android:layout_weight="1"
             android:layout_margin="10dp"
-            android:background="@drawable/ic_launcher_background" />
+            android:layout_weight="1"
+            android:scaleType="centerCrop"
+            android:src="@drawable/recreation_unsel"/>
     </LinearLayout>
 
     <LinearLayout
@@ -144,30 +161,33 @@
             android:layout_width="0dp"
             android:layout_height="70dp"
             android:layout_weight="1"
-            android:scaleType="fitCenter"
             android:layout_margin="10dp"
-            android:background="@drawable/ic_launcher_background" />
+            android:scaleType="centerCrop"
+            android:src="@drawable/treatment_unsel"/>
         <ImageButton
             android:id="@+id/btn_stationery"
             android:layout_width="0dp"
             android:layout_height="70dp"
             android:layout_weight="1"
             android:layout_margin="10dp"
-            android:background="@drawable/ic_launcher_background" />
+            android:scaleType="centerCrop"
+            android:src="@drawable/stationery_unsel"/>
         <ImageButton
             android:id="@+id/btn_book"
             android:layout_width="0dp"
             android:layout_height="70dp"
             android:layout_weight="1"
             android:layout_margin="10dp"
-            android:background="@drawable/ic_launcher_background" />
+            android:scaleType="centerCrop"
+            android:src="@drawable/book_uncel"/>
         <ImageButton
             android:id="@+id/btn_tution"
             android:layout_width="0dp"
             android:layout_height="70dp"
             android:layout_weight="1"
             android:layout_margin="10dp"
-            android:background="@drawable/ic_launcher_background" />
+            android:scaleType="centerCrop"
+            android:src="@drawable/treatment_unsel" />
     </LinearLayout>
 
 
