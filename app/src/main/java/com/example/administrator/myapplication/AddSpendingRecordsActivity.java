@@ -75,6 +75,7 @@ public class AddSpendingRecordsActivity extends AppCompatActivity{
 
         //close this activity
         AddSpendingRecordsActivity.this.finish();
+        MainActivity.instance.recreate();
     }
 
     public void clk_select(View view){

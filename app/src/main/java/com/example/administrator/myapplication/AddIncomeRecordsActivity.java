@@ -53,19 +53,22 @@ public class AddIncomeRecordsActivity extends AppCompatActivity{
 
     public void clk_ok(View view){
         //add to the database, then close this activity
-        String type = ((ImageButton)findViewById(R.id.btn_selected)).getContentDescription().toString();
-        DateFormat formatter = new SimpleDateFormat("YYYY-MM-DD HH:MM:SS.SSS");
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTimeInMillis(System.currentTimeMillis());
-        String time = formatter.format(calendar.getTime());
-        String comment = "dinner";
-        float money = Float.valueOf(((EditText)findViewById(R.id.et_money)).getText().toString());
-        boolean dataInserted = databaseHelper.insertData(type, time, comment, money);
-        if(dataInserted = true){
-            Log.d(getPackageName(), "Data inserted");
-        }else{
-            Log.e(getPackageName(), "Failed inserted data");
-        }
+
+        //Here should be another table. And add income to this table.
+
+//        String type = ((ImageButton)findViewById(R.id.btn_selected)).getContentDescription().toString();
+//        DateFormat formatter = new SimpleDateFormat("YYYY-MM-DD HH:MM:SS.SSS");
+//        Calendar calendar = Calendar.getInstance();
+//        calendar.setTimeInMillis(System.currentTimeMillis());
+//        String time = formatter.format(calendar.getTime());
+//        String comment = "dinner";
+//        float money = Float.valueOf(((EditText)findViewById(R.id.et_money)).getText().toString());
+//        boolean dataInserted = databaseHelper.insertData(type, time, comment, money);
+//        if(dataInserted = true){
+//            Log.d(getPackageName(), "Data inserted");
+//        }else{
+//            Log.e(getPackageName(), "Failed inserted data");
+//        }
 
         //close this activity
         AddIncomeRecordsActivity.this.finish();
