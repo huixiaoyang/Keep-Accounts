@@ -5,16 +5,31 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageButton;
+import android.widget.Toast;
 
 /**
  * Created by Administrator on 2018\3\30 0030.
  */
 
 public class AddIncomeRecordsActivity extends AppCompatActivity{
+
+    private int[] imageIdUseBlackAndWhite;
+    private int[] imageIdUseMulticolor;
+    private int[] imageButtonId;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_income_records);
+
+        imageIdUseMulticolor = new int[]{R.drawable.salary_sel, R.drawable.lend_money_sel, R.drawable.red_envelope_sel, R.drawable.pocket_money_sel,
+                R.drawable.lottery_ticker_sel};
+
+        imageIdUseBlackAndWhite = new int[]{R.drawable.salary_unsel, R.drawable.lend_money_unsel, R.drawable.red_envelope_unsel, R.drawable.pocket_money_unsel,
+                R.drawable.lottery_ticket_unsel};
+
+        imageButtonId = new int[]{R.id.btn_salary,R.id.btn_lend,R.id.btn_red,R.id.btn_pocket_money,
+                R.id.btn_lottery_ticket};
     }
     public void btnAddSpendingRecords(View view) {
         //to do when the button is clicked
@@ -30,5 +45,19 @@ public class AddIncomeRecordsActivity extends AppCompatActivity{
     public void clk_ok(View view){
         //add to the database, then close this activity
         AddIncomeRecordsActivity.this.finish();
+    }
+    public void clk_select(View view){
+        ImageButton imageButtonSelect = (ImageButton) view;
+        imageButtonSelect.setImageResource(imageIdUseMulticolor[(Integer.valueOf(view.getTag().toString()))]);
+
+        ImageButton imageButtonShow =  (ImageButton)findViewById(R.id.btn_selected);
+        imageButtonShow.setImageResource(imageIdUseMulticolor[(Integer.valueOf(view.getTag().toString()))]);
+
+        for(int i=0;i<5;i++){
+            ImageButton imageButtonNotSelect = (ImageButton)findViewById(imageButtonId[i]);
+            if(Integer.valueOf(view.getTag().toString())!=i)
+                imageButtonNotSelect.setImageResource(imageIdUseBlackAndWhite[i]);
+        }
+       // Toast.makeText(this, "Toast text, normal", Toast.LENGTH_SHORT).show();
     }
 }
