@@ -28,6 +28,7 @@
             android:text="Income"
             android:layout_marginLeft="100dp"
             android:id="@+id/btn_income"
+            style="@style/Base.Widget.AppCompat.Button.Borderless"
             android:onClick="clk_income"/>
 
         <ImageButton
@@ -45,7 +46,9 @@
             android:layout_height="wrap_content"
             android:layout_toRightOf="@+id/btn_income"
             android:text="Spending"
-            android:id="@+id/btn_spending"/>
+            android:id="@+id/btn_spending"
+            android:background="@android:color/darker_gray"
+            style="@style/Base.Widget.AppCompat.Button.Borderless" />
     </RelativeLayout>
 
     <RelativeLayout
@@ -69,10 +72,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
-            android:layout_alignParentTop="true"
             android:singleLine="true"
             android:digits="1234567890."
-            android:text="0"
+            android:text=""
             android:layout_centerVertical="true"
             android:textColor="#000000"
             android:textSize="40sp" />

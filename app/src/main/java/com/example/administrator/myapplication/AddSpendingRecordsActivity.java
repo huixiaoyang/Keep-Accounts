@@ -50,6 +50,7 @@ public class AddSpendingRecordsActivity extends AppCompatActivity{
         Intent itent=new Intent();
         itent.setClass(AddSpendingRecordsActivity.this, AddIncomeRecordsActivity.class);
         startActivity(itent);
+        overridePendingTransition(android.R.anim.slide_in_left,android.R.anim.slide_out_right);
         AddSpendingRecordsActivity.this.finish();
     }
 
@@ -86,7 +87,7 @@ public class AddSpendingRecordsActivity extends AppCompatActivity{
         imageButtonShow.setImageResource(imageIdUseMulticolor[(Integer.valueOf(view.getTag().toString()))]);
         imageButtonShow.setContentDescription(imageButtonSelect.getContentDescription());
 
-        for(int i=0;i<5;i++){
+        for(int i=0;i<12;i++){
             ImageButton imageButtonNotSelect = (ImageButton)findViewById(imageButtonId[i]);
             if(Integer.valueOf(view.getTag().toString())!=i)
                 imageButtonNotSelect.setImageResource(imageIdUseBlackAndWhite[i]);
