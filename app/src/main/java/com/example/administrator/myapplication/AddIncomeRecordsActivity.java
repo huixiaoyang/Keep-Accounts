@@ -18,6 +18,9 @@ import java.util.Calendar;
  */
 
 public class AddIncomeRecordsActivity extends AppCompatActivity{
+    private int[] imageIdUseBlackAndWhite;
+    private int[] imageIdUseMulticolor;
+    private int[] imageButtonId;
     private DatabaseHelper databaseHelper;
 
     @Override
@@ -26,8 +29,17 @@ public class AddIncomeRecordsActivity extends AppCompatActivity{
         setContentView(R.layout.activity_add_income_records);
 
         databaseHelper = new DatabaseHelper(this);
+
+        imageIdUseMulticolor = new int[]{R.drawable.salary_sel, R.drawable.lend_money_sel, R.drawable.red_envelope_sel, R.drawable.pocket_money_sel,
+                R.drawable.lottery_ticker_sel};
+
+        imageIdUseBlackAndWhite = new int[]{R.drawable.salary_unsel, R.drawable.lend_money_unsel, R.drawable.red_envelope_unsel, R.drawable.pocket_money_unsel,
+                R.drawable.lottery_ticket_unsel};
+
+        imageButtonId = new int[]{R.id.btn_salary,R.id.btn_lend,R.id.btn_red,R.id.btn_pocket_money,
+                R.id.btn_lottery_ticket};
     }
-    public void btnAddSpendingRecords(View view) {
+    public void clk_spending(View view) {
         //to do when the button is clicked
         Intent itent=new Intent();
         itent.setClass(AddIncomeRecordsActivity.this, AddSpendingRecordsActivity.class);
@@ -38,8 +50,8 @@ public class AddIncomeRecordsActivity extends AppCompatActivity{
     public void clk_cancel(View view){
         AddIncomeRecordsActivity.this.finish();
     }
+
     public void clk_ok(View view){
-        //add to the database, then close this activity
         //add to the database, then close this activity
         String type = ((ImageButton)findViewById(R.id.btn_selected)).getContentDescription().toString();
         DateFormat formatter = new SimpleDateFormat("YYYY-MM-DD HH:MM:SS.SSS");
@@ -57,5 +69,20 @@ public class AddIncomeRecordsActivity extends AppCompatActivity{
 
         //close this activity
         AddIncomeRecordsActivity.this.finish();
+    }
+
+    public void clk_select(View view){
+        ImageButton imageButtonSelect = (ImageButton) view;
+        imageButtonSelect.setImageResource(imageIdUseMulticolor[(Integer.valueOf(view.getTag().toString()))]);
+
+        ImageButton imageButtonShow =  (ImageButton)findViewById(R.id.btn_selected);
+        imageButtonShow.setImageResource(imageIdUseMulticolor[(Integer.valueOf(view.getTag().toString()))]);
+        imageButtonShow.setContentDescription(imageButtonSelect.getContentDescription());
+
+        for(int i=0;i<5;i++){
+            ImageButton imageButtonNotSelect = (ImageButton)findViewById(imageButtonId[i]);
+            if(Integer.valueOf(view.getTag().toString())!=i)
+                imageButtonNotSelect.setImageResource(imageIdUseBlackAndWhite[i]);
+        }
     }
 }
