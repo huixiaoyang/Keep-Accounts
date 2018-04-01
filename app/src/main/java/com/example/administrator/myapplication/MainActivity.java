@@ -5,8 +5,10 @@ import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -20,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
     private ListView listView;
     private SimpleAdapter sim_aAdapter; // 1. 新建一个数据适配器
     private List<Map<String, Object>>dataList; // 数据源
+    public static MainActivity instance = null;
     private DatabaseHelper databaseHelper;
 
     @Override
@@ -28,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         databaseHelper = new DatabaseHelper(this);
+        instance = this;
 
         listView = (ListView)findViewById(R.id.listView_main);
         // 2. 适配器加载数据源
@@ -40,13 +44,15 @@ public class MainActivity extends AppCompatActivity {
     }
     private List<Map<String, Object>> getData(){
         Cursor cursor = databaseHelper.readData();
-        while(cursor.moveToNext()){
+        cursor.moveToLast();
+        while(cursor.moveToPrevious()){
             Map<String, Object>map = new HashMap<String, Object>();
-            map.put("text_date",cursor.getString(2));
-            map.put("image_type",R.id.btn_food);
-            map.put("text_type",cursor.getString(1));
-            map.put("text_type_datail",cursor.getString(3));
-            map.put("text_money",cursor.getString(4));
+            map.put("text_date", cursor.getString(2));
+            map.put("image_type", getId(cursor.getString(1)));
+            map.put("text_type", cursor.getString(1));
+            map.put("text_type_detail", cursor.getString(3));
+            map.put("text_money", cursor.getString(4));
+            dataList.add(map);
         }
         return dataList;
     }
@@ -54,4 +60,25 @@ public class MainActivity extends AppCompatActivity {
         //to do when the button is clicked
         startActivity(new Intent(MainActivity.this, AddSpendingRecordsActivity.class));
     }
+
+    public int getId(String type){
+        int id = R.drawable.food_sel;
+
+        switch (type){
+            case "food": id = R.drawable.food_sel; break;
+            case "traffic": id = R.drawable.traffic_sel; break;
+            case "drink": id = R.drawable.drink_sel; break;
+            case "daily necessities": id = R.drawable.daily_sel; break;
+            case "cloth": id = R.drawable.cloth_sel; break;
+            case "red envelope": id = R.drawable.red_envelope_sel; break;
+            case "phone top up": id = R.drawable.top_up_sel; break;
+            case "recreation": id = R.drawable.recreation_sel; break;
+            case "treatment": id = R.drawable.treatment_sel; break;
+            case "stationery": id = R.drawable.stationery_sel; break;
+            case "book": id = R.drawable.book_sel; break;
+            case "tution": id = R.drawable.tuition_sel; break;
+        }
+        return id;
+    }
+
 }

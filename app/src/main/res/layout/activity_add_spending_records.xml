@@ -28,7 +28,7 @@
             android:text="Income"
             android:layout_marginLeft="100dp"
             android:id="@+id/btn_income"
-            android:onClick="btnAddIncomeRecords"/>
+            android:onClick="clk_income"/>
 
         <ImageButton
             android:id="@+id/btn_ok"
@@ -50,29 +50,29 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
         android:layout_weight="2"
-        android:layout_gravity="center_horizontal">
+        android:layout_height="0dp">
 
         <ImageButton
             android:id="@+id/btn_selected"
-            style="@style/Base.Widget.AppCompat.Button.Borderless"
             android:layout_width="75dp"
             android:layout_height="70dp"
             android:layout_alignParentStart="true"
             android:layout_centerVertical="true"
-            android:layout_marginStart="11dp"
+            android:layout_marginStart="12dp"
+            android:contentDescription="food"
+            style="@style/Base.Widget.AppCompat.Button.Borderless"
             android:scaleType="centerCrop"
-            android:src="@null" />
-
+            android:src="@drawable/food_sel" />
         <EditText
             android:id="@+id/et_money"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:digits="1234567890."
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
             android:singleLine="true"
-            android:text=""
+            android:digits="1234567890."
+            android:text="0"
             android:layout_centerVertical="true"
             android:textColor="#000000"
             android:textSize="40sp" />
@@ -90,10 +90,11 @@
             android:layout_weight="1"
             android:scaleType="centerCrop"
             android:layout_margin="10dp"
-            android:src="@drawable/food_unsel"
+            android:contentDescription="food"
             style="@style/Base.Widget.AppCompat.Button.Borderless"
+            android:tag="0"
             android:onClick="clk_select"
-            android:tag="0"/>
+            android:src="@drawable/food_sel" />
         <ImageButton
             android:id="@+id/btn_traffic"
             android:layout_width="0dp"
@@ -101,10 +102,11 @@
             android:layout_weight="1"
             android:layout_margin="10dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/traffic_unsel"
-            android:onClick="clk_select"
+            android:contentDescription="traffic"
             style="@style/Base.Widget.AppCompat.Button.Borderless"
-            android:tag="1"/>
+            android:tag="1"
+            android:onClick="clk_select"
+            android:src="@drawable/traffic_unsel"/>
         <ImageButton
             android:id="@+id/btn_drink"
             android:layout_width="0dp"
@@ -112,10 +114,11 @@
             android:layout_weight="1"
             android:layout_margin="10dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/drink_unsel"
-            android:onClick="clk_select"
+            android:contentDescription="drink"
             style="@style/Base.Widget.AppCompat.Button.Borderless"
-            android:tag="2"/>
+            android:tag="2"
+            android:onClick="clk_select"
+            android:src="@drawable/drink_unsel"/>
         <ImageButton
             android:id="@+id/btn_daily_necessities"
             android:layout_width="0dp"
@@ -123,10 +126,11 @@
             android:layout_weight="1"
             android:layout_margin="10dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/daily_unsel"
-            android:onClick="clk_select"
+            android:contentDescription="daily necessities"
             style="@style/Base.Widget.AppCompat.Button.Borderless"
-            android:tag="3"/>
+            android:tag="3"
+            android:onClick="clk_select"
+            android:src="@drawable/daily_unsel"/>
     </LinearLayout>
 
     <LinearLayout
@@ -141,10 +145,11 @@
             android:layout_weight="1"
             android:layout_margin="10dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/cloth_unsel"
-            android:tag="4"
+            android:contentDescription="cloth"
             style="@style/Base.Widget.AppCompat.Button.Borderless"
-            android:onClick="clk_select"/>
+            android:tag="4"
+            android:onClick="clk_select"
+            android:src="@drawable/cloth_unsel"/>
         <ImageButton
             android:id="@+id/btn_red_envelope"
             android:layout_width="0dp"
@@ -152,10 +157,11 @@
             android:layout_weight="1"
             android:layout_margin="10dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/red_envelope_unsel"
-            android:tag="5"
+            android:contentDescription="red envelope"
             style="@style/Base.Widget.AppCompat.Button.Borderless"
-            android:onClick="clk_select"/>
+            android:tag="5"
+            android:onClick="clk_select"
+            android:src="@drawable/red_envelope_unsel" />
         <ImageButton
             android:id="@+id/btn_phone_top_up"
             android:layout_width="0dp"
@@ -163,10 +169,11 @@
             android:layout_weight="1"
             android:layout_margin="10dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/top_up_unsel"
-            android:tag="6"
+            android:contentDescription="phone top up"
             style="@style/Base.Widget.AppCompat.Button.Borderless"
-            android:onClick="clk_select"/>
+            android:onClick="clk_select"
+            android:tag="6"
+            android:src="@drawable/top_up_unsel"/>
 
         <ImageButton
             android:id="@+id/btn_recreation"
@@ -175,10 +182,11 @@
             android:layout_margin="10dp"
             android:layout_weight="1"
             android:scaleType="centerCrop"
-            android:src="@drawable/recreation_unsel"
-            android:tag="7"
+            android:contentDescription="recreation"
             style="@style/Base.Widget.AppCompat.Button.Borderless"
-            android:onClick="clk_select"/>
+            android:onClick="clk_select"
+            android:tag="7"
+            android:src="@drawable/recreation_unsel"/>
     </LinearLayout>
 
     <LinearLayout
@@ -193,10 +201,11 @@
             android:layout_weight="1"
             android:layout_margin="10dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/treatment_unsel"
-            android:tag="8"
+            android:contentDescription="treatment"
             style="@style/Base.Widget.AppCompat.Button.Borderless"
-            android:onClick="clk_select"/>
+            android:onClick="clk_select"
+            android:tag="8"
+            android:src="@drawable/treatment_unsel"/>
         <ImageButton
             android:id="@+id/btn_stationery"
             android:layout_width="0dp"
@@ -204,10 +213,11 @@
             android:layout_weight="1"
             android:layout_margin="10dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/stationery_unsel"
-            android:tag="9"
+            android:contentDescription="stationery"
             style="@style/Base.Widget.AppCompat.Button.Borderless"
-            android:onClick="clk_select"/>
+            android:onClick="clk_select"
+            android:tag="9"
+            android:src="@drawable/stationery_unsel"/>
         <ImageButton
             android:id="@+id/btn_book"
             android:layout_width="0dp"
@@ -215,10 +225,11 @@
             android:layout_weight="1"
             android:layout_margin="10dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/book_unsel"
-            android:tag="10"
+            android:contentDescription="book"
             style="@style/Base.Widget.AppCompat.Button.Borderless"
-            android:onClick="clk_select"/>
+            android:onClick="clk_select"
+            android:tag="10"
+            android:src="@drawable/book_unsel"/>
         <ImageButton
             android:id="@+id/btn_tution"
             android:layout_width="0dp"
@@ -226,10 +237,11 @@
             android:layout_weight="1"
             android:layout_margin="10dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/tuition_unsel"
-            android:tag="11"
+            android:contentDescription="tution"
             style="@style/Base.Widget.AppCompat.Button.Borderless"
-            android:onClick="clk_select"/>
+            android:onClick="clk_select"
+            android:tag="11"
+            android:src="@drawable/tuition_unsel" />
     </LinearLayout>
 
 

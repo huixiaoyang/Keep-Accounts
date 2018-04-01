@@ -2,17 +2,19 @@ package com.example.administrator.myapplication;
 
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.ImageView;
+import android.widget.Toast;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
 
 /**
@@ -20,12 +22,11 @@ import java.util.Calendar;
  */
 
 public class AddSpendingRecordsActivity extends AppCompatActivity{
-
     private int[] imageIdUseBlackAndWhite;
     private int[] imageIdUseMulticolor;
     private int[] imageButtonId;
     private DatabaseHelper databaseHelper;
-    @Override
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_spending_records);
@@ -44,16 +45,18 @@ public class AddSpendingRecordsActivity extends AppCompatActivity{
                 R.id.btn_cloth,R.id.btn_red_envelope,R.id.btn_phone_top_up,R.id.btn_recreation,
                 R.id.btn_treatment,R.id.btn_stationery,R.id.btn_book,R.id.btn_tution,};
     }
-    public void btnAddIncomeRecords(View view) {
-        //to do when the button is clicked
+    public void clk_income(View view) {
+        //close this activity and open the AddIncomeRecordsActivity
         Intent itent=new Intent();
         itent.setClass(AddSpendingRecordsActivity.this, AddIncomeRecordsActivity.class);
         startActivity(itent);
         AddSpendingRecordsActivity.this.finish();
     }
+
     public void clk_cancel(View view){
         AddSpendingRecordsActivity.this.finish();
     }
+
     public void clk_ok(View view){
         //add to the database, then close this activity
         String type = ((ImageButton)findViewById(R.id.btn_selected)).getContentDescription().toString();
@@ -72,6 +75,7 @@ public class AddSpendingRecordsActivity extends AppCompatActivity{
 
         //close this activity
         AddSpendingRecordsActivity.this.finish();
+        MainActivity.instance.recreate();
     }
 
     public void clk_select(View view){
@@ -80,8 +84,9 @@ public class AddSpendingRecordsActivity extends AppCompatActivity{
 
         ImageButton imageButtonShow =  (ImageButton)findViewById(R.id.btn_selected);
         imageButtonShow.setImageResource(imageIdUseMulticolor[(Integer.valueOf(view.getTag().toString()))]);
+        imageButtonShow.setContentDescription(imageButtonSelect.getContentDescription());
 
-        for(int i=0;i<12;i++){
+        for(int i=0;i<5;i++){
             ImageButton imageButtonNotSelect = (ImageButton)findViewById(imageButtonId[i]);
             if(Integer.valueOf(view.getTag().toString())!=i)
                 imageButtonNotSelect.setImageResource(imageIdUseBlackAndWhite[i]);

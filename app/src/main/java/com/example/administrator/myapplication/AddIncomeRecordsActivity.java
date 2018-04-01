@@ -8,7 +8,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.Toast;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -19,11 +18,11 @@ import java.util.Calendar;
  */
 
 public class AddIncomeRecordsActivity extends AppCompatActivity{
-
     private int[] imageIdUseBlackAndWhite;
     private int[] imageIdUseMulticolor;
     private int[] imageButtonId;
     private DatabaseHelper databaseHelper;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,7 +39,7 @@ public class AddIncomeRecordsActivity extends AppCompatActivity{
         imageButtonId = new int[]{R.id.btn_salary,R.id.btn_lend,R.id.btn_red,R.id.btn_pocket_money,
                 R.id.btn_lottery_ticket};
     }
-    public void btnAddSpendingRecords(View view) {
+    public void clk_spending(View view) {
         //to do when the button is clicked
         Intent itent=new Intent();
         itent.setClass(AddIncomeRecordsActivity.this, AddSpendingRecordsActivity.class);
@@ -51,37 +50,28 @@ public class AddIncomeRecordsActivity extends AppCompatActivity{
     public void clk_cancel(View view){
         AddIncomeRecordsActivity.this.finish();
     }
+
     public void clk_ok(View view){
         //add to the database, then close this activity
-        String type = ((ImageButton)findViewById(R.id.btn_selected)).getContentDescription().toString();
-        DateFormat formatter = new SimpleDateFormat("YYYY-MM-DD HH:MM:SS.SSS");
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTimeInMillis(System.currentTimeMillis());
-        String time = formatter.format(calendar.getTime());
-        String comment = "dinner";
-        float money = Float.valueOf(((EditText)findViewById(R.id.et_money)).getText().toString());
-        boolean dataInserted = databaseHelper.insertData(type, time, comment, money);
-        if(dataInserted = true){
-            Log.d(getPackageName(), "Data inserted");
-        }else{
-            Log.e(getPackageName(), "Failed inserted data");
-        }
+
+        //Here should be another table. And add income to this table.
 
         //close this activity
         AddIncomeRecordsActivity.this.finish();
     }
+
     public void clk_select(View view){
         ImageButton imageButtonSelect = (ImageButton) view;
         imageButtonSelect.setImageResource(imageIdUseMulticolor[(Integer.valueOf(view.getTag().toString()))]);
 
         ImageButton imageButtonShow =  (ImageButton)findViewById(R.id.btn_selected);
         imageButtonShow.setImageResource(imageIdUseMulticolor[(Integer.valueOf(view.getTag().toString()))]);
+        imageButtonShow.setContentDescription(imageButtonSelect.getContentDescription());
 
         for(int i=0;i<5;i++){
             ImageButton imageButtonNotSelect = (ImageButton)findViewById(imageButtonId[i]);
             if(Integer.valueOf(view.getTag().toString())!=i)
                 imageButtonNotSelect.setImageResource(imageIdUseBlackAndWhite[i]);
         }
-       // Toast.makeText(this, "Toast text, normal", Toast.LENGTH_SHORT).show();
     }
 }
