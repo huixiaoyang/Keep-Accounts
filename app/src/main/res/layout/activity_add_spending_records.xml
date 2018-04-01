@@ -57,19 +57,22 @@
             android:id="@+id/btn_selected"
             android:layout_width="75dp"
             android:layout_height="70dp"
-            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="12dp"
+            android:contentDescription="food"
             android:scaleType="centerCrop"
-            android:layout_margin="10dp"
-            android:src="@drawable/food_sel"/>
+            android:src="@drawable/food_sel" />
         <EditText
+            android:id="@+id/et_money"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="0"
-            android:layout_alignParentRight="true"
-            android:textSize="40sp"
-            android:digits="1234567890."
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
             android:singleLine="true"
-            android:textColor="#000000"/>
+            android:text="0"
+            android:textColor="#000000"
+            android:textSize="40sp" />
     </RelativeLayout>
 
     <LinearLayout
@@ -84,6 +87,7 @@
             android:layout_weight="1"
             android:scaleType="centerCrop"
             android:layout_margin="10dp"
+            android:contentDescription="food"
             android:src="@drawable/food_sel" />
         <ImageButton
             android:id="@+id/btn_traffic"
@@ -92,6 +96,7 @@
             android:layout_weight="1"
             android:layout_margin="10dp"
             android:scaleType="centerCrop"
+            android:contentDescription="traffic"
             android:src="@drawable/traffic_unsel"/>
         <ImageButton
             android:id="@+id/btn_drink"
@@ -100,6 +105,7 @@
             android:layout_weight="1"
             android:layout_margin="10dp"
             android:scaleType="centerCrop"
+            android:contentDescription="drink"
             android:src="@drawable/drink_unsel"/>
         <ImageButton
             android:id="@+id/btn_daily_necessities"
@@ -108,6 +114,7 @@
             android:layout_weight="1"
             android:layout_margin="10dp"
             android:scaleType="centerCrop"
+            android:contentDescription="daily necessities"
             android:src="@drawable/daily_unsel"/>
     </LinearLayout>
 
@@ -123,6 +130,7 @@
             android:layout_weight="1"
             android:layout_margin="10dp"
             android:scaleType="centerCrop"
+            android:contentDescription="cloth"
             android:src="@drawable/cloth_unsel"/>
         <ImageButton
             android:id="@+id/btn_red_envelope"
@@ -131,6 +139,7 @@
             android:layout_weight="1"
             android:layout_margin="10dp"
             android:scaleType="centerCrop"
+            android:contentDescription="red envelope"
             android:src="@drawable/red_envelope_unsel" />
         <ImageButton
             android:id="@+id/btn_phone_top_up"
@@ -139,6 +148,7 @@
             android:layout_weight="1"
             android:layout_margin="10dp"
             android:scaleType="centerCrop"
+            android:contentDescription="phone top up"
             android:src="@drawable/top_up_unsel"/>
 
         <ImageButton
@@ -148,6 +158,7 @@
             android:layout_margin="10dp"
             android:layout_weight="1"
             android:scaleType="centerCrop"
+            android:contentDescription="recreation"
             android:src="@drawable/recreation_unsel"/>
     </LinearLayout>
 
@@ -163,6 +174,7 @@
             android:layout_weight="1"
             android:layout_margin="10dp"
             android:scaleType="centerCrop"
+            android:contentDescription="treatment"
             android:src="@drawable/treatment_unsel"/>
         <ImageButton
             android:id="@+id/btn_stationery"
@@ -171,6 +183,7 @@
             android:layout_weight="1"
             android:layout_margin="10dp"
             android:scaleType="centerCrop"
+            android:contentDescription="stationery"
             android:src="@drawable/stationery_unsel"/>
         <ImageButton
             android:id="@+id/btn_book"
@@ -179,6 +192,7 @@
             android:layout_weight="1"
             android:layout_margin="10dp"
             android:scaleType="centerCrop"
+            android:contentDescription="book"
             android:src="@drawable/book_uncel"/>
         <ImageButton
             android:id="@+id/btn_tution"
@@ -187,7 +201,8 @@
             android:layout_weight="1"
             android:layout_margin="10dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/treatment_unsel" />
+            android:contentDescription="tution"
+            android:src="@drawable/tuition_unsel" />
     </LinearLayout>
 
 
