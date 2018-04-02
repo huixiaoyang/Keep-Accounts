@@ -19,6 +19,7 @@
             android:layout_alignParentStart="true"
             android:layout_marginStart="11dp"
             android:background="@drawable/button_selector"
+            style="@style/Base.Widget.AppCompat.Button.Borderless"
             android:scaleType="centerCrop"
             android:onClick="clk_cancel"
             android:src="@drawable/cancel" />
@@ -38,6 +39,7 @@
             android:layout_alignParentRight="true"
             android:layout_marginRight="10dp"
             android:background="@drawable/button_selector"
+            style="@style/Base.Widget.AppCompat.Button.Borderless"
             android:scaleType="centerCrop"
             android:onClick="clk_ok"
             android:src="@drawable/ok" />
