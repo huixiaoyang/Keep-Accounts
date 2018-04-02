@@ -50,6 +50,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         //Create the database
+
         sqLiteDatabase.execSQL("CREATE TABLE " + TABLE_NAME_SPENDING + " (" +
                 "id integer primary key autoincrement," +
                 "type text," +
@@ -69,35 +70,44 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     }
 
+
     public void updateTime(String table, int num, String time) {
+
         //update the time of one order
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("time",time);
+
         sqLiteDatabase.update(table, contentValues, "orderNum=?", new String[]{String.valueOf(num)});
     }
 
     public void updateType(String table, int num, String type) {
+
         //update the type of one order
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("type", type);
+
         sqLiteDatabase.update(table, contentValues, "orderNum=?", new String[]{String.valueOf(num)});
     }
 
     public void updateComment(String table, int num, String comment){
+
         //update the comment of one order
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("comment", comment);
+
         sqLiteDatabase.update(table, contentValues, "orderNum=?", new String[]{String.valueOf(num)});
     }
 
     public void updateMoney(String table, int num, float money){
+
         //update the money of one order
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("money", money);
+
         sqLiteDatabase.update(table, contentValues, "orderNum=?", new String[]{String.valueOf(num)});
     }
 
@@ -108,6 +118,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     public boolean insertData(String table, String type, String time, String comment, float money) {
+
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(COL_2, type);
@@ -117,7 +128,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         //Table name, null and the content values are needed as param
 
+
         long result = sqLiteDatabase.insert(table, null, contentValues);
+
         if (result == -1) {
             //Insert has failed
             return false;

@@ -22,8 +22,10 @@ public class AddIncomeRecordsActivity extends AppCompatActivity{
     private int[] imageIdUseMulticolor;
     private int[] imageButtonId;
     private DatabaseHelper databaseHelper;
+
     public static String TABLE_NAME_SPENDING = "acounts";
     public static String TABLE_NAME_INCOME = "income";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +57,7 @@ public class AddIncomeRecordsActivity extends AppCompatActivity{
 
     public void clk_ok(View view){
         //add to the database, then close this activity
+
         String type = ((ImageButton)findViewById(R.id.btn_selected)).getContentDescription().toString();
         DateFormat formatter = new SimpleDateFormat("YYYY-MM-DD HH:MM:SS.SSS");
         Calendar calendar = Calendar.getInstance();
@@ -71,6 +74,7 @@ public class AddIncomeRecordsActivity extends AppCompatActivity{
 
         //close this activity
         MainActivity.instance.recreate();
+
         AddIncomeRecordsActivity.this.finish();
     }
 

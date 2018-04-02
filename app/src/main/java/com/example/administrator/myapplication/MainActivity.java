@@ -49,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
         // 3. 视图(ListView)加载适配器
         listView.setAdapter(sim_aAdapter);
     }
+
     private List<Map<String, Object>> getData(String table){
         Cursor cursor = databaseHelper.readData(table);
         if(cursor.getCount()!=0){
@@ -76,6 +77,7 @@ public class MainActivity extends AppCompatActivity {
                 map.put("text_money", cursor.getString(4));
                 dataList.add(map);
             }while(cursor.moveToPrevious());
+
         }
 
         Collections.sort(dataList, new Comparator<Map<String, Object>>() {
@@ -106,6 +108,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public int getIdSpending(String type){
+
         int id = R.drawable.food_sel;
 
         switch (type){
@@ -137,5 +140,4 @@ public class MainActivity extends AppCompatActivity {
         }
         return id;
     }
-
 }
