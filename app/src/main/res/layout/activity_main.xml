@@ -19,6 +19,7 @@
             android:layout_height="50dp"
             android:layout_alignParentStart="true"
             android:layout_alignTop="@+id/btn_QRcode"
+            style="@style/Base.Widget.AppCompat.Button.Borderless"
             android:scaleType="centerCrop"
             app:srcCompat="@drawable/pie_chart" />
 
@@ -29,6 +30,7 @@
             android:layout_height="40dp"
             android:layout_alignParentEnd="true"
             android:layout_alignParentTop="true"
+            style="@style/Base.Widget.AppCompat.Button.Borderless"
             android:scaleType="fitXY"
             app:srcCompat="@drawable/qr" />
         <Button
@@ -94,9 +96,9 @@
             android:layout_height="50dp"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="10dp"
-            android:background="@android:color/white"
+            style="@style/Widget.AppCompat.Button.Borderless"
             android:onClick="btnAddSpendingRecords"
-            android:scaleType="fitXY"
+            android:scaleType="fitCenter"
             android:src="@drawable/add" />
     </RelativeLayout>
 

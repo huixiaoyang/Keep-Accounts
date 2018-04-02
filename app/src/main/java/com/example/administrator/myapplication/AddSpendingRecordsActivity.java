@@ -26,6 +26,8 @@ public class AddSpendingRecordsActivity extends AppCompatActivity{
     private int[] imageIdUseMulticolor;
     private int[] imageButtonId;
     private DatabaseHelper databaseHelper;
+    public static String TABLE_NAME_SPENDING = "acounts";
+    public static String TABLE_NAME_INCOME = "income";
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,7 +68,7 @@ public class AddSpendingRecordsActivity extends AppCompatActivity{
         String time = formatter.format(calendar.getTime());
         String comment = "dinner";
         float money = Float.valueOf(((EditText)findViewById(R.id.et_money)).getText().toString());
-        boolean dataInserted = databaseHelper.insertData(type, time, comment, money);
+        boolean dataInserted = databaseHelper.insertData(TABLE_NAME_SPENDING, type, time, comment, money);
         if(dataInserted = true){
             Log.d(getPackageName(), "Data inserted");
         }else{
@@ -74,8 +76,8 @@ public class AddSpendingRecordsActivity extends AppCompatActivity{
         }
 
         //close this activity
-        AddSpendingRecordsActivity.this.finish();
         MainActivity.instance.recreate();
+        AddSpendingRecordsActivity.this.finish();
     }
 
     public void clk_select(View view){
@@ -86,7 +88,7 @@ public class AddSpendingRecordsActivity extends AppCompatActivity{
         imageButtonShow.setImageResource(imageIdUseMulticolor[(Integer.valueOf(view.getTag().toString()))]);
         imageButtonShow.setContentDescription(imageButtonSelect.getContentDescription());
 
-        for(int i=0;i<5;i++){
+        for(int i=0;i<12;i++){
             ImageButton imageButtonNotSelect = (ImageButton)findViewById(imageButtonId[i]);
             if(Integer.valueOf(view.getTag().toString())!=i)
                 imageButtonNotSelect.setImageResource(imageIdUseBlackAndWhite[i]);
