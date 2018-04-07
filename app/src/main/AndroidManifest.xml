@@ -18,12 +18,22 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".AddIncomeRecordsActivity"
-            android:screenOrientation="portrait"/>
-        <activity
-            android:name=".AddSpendingRecordsActivity"
-            android:screenOrientation="portrait"/>
+      
+        <activity android:name=".AddIncomeRecordsActivity"
+            android:screenOrientation="portrait">
+        </activity>
+
+        <activity android:name=".AddSpendingRecordsActivity"
+            android:screenOrientation="portrait">
+        </activity>
+
+        <activity android:name=".SpendingPieChartActivity"
+            android:screenOrientation="portrait">
+        </activity>
+
+        <activity android:name=".IncomePieChartActivity"
+            android:screenOrientation="portrait">
+        </activity>
     </application>
 
 </manifest>

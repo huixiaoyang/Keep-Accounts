@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:layout_height="0dp">
+
+        <ImageButton
+            android:id="@+id/btn_pie_chart"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="11dp"
+            android:background="@drawable/button_selector"
+            style="@style/Base.Widget.AppCompat.Button.Borderless"
+            android:scaleType="centerCrop"
+            android:onClick="btnReturnMain"
+            android:src="@drawable/return_main" />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Income"
+            android:layout_marginLeft="100dp"
+            android:background="@android:color/darker_gray"
+            style="@style/Base.Widget.AppCompat.Button.Borderless"
+            android:id="@+id/btn_income" />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/btn_income"
+            android:text="Spending"
+            android:id="@+id/btn_spending"
+            style="@style/Base.Widget.AppCompat.Button.Borderless"
+            android:onClick="btnReturnSpending"/>
+    </RelativeLayout>
+
+    <com.github.mikephil.charting.charts.PieChart
+        android:id="@+id/mPieChart"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="5"/>
+</LinearLayout>

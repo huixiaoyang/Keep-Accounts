@@ -170,4 +170,9 @@ public class MainActivity extends AppCompatActivity {
         }
         return id;
     }
+
+    public void btnSpendingPieChart(View view) {
+        //to do when the button is clicked
+        startActivity(new Intent(MainActivity.this, SpendingPieChartActivity.class));
+    }
 }
