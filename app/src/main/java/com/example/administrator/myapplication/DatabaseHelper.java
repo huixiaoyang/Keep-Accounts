@@ -8,7 +8,6 @@ package com.example.administrator.myapplication;
  * DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE
  * OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
- *
  */
 
 import android.content.ContentValues;
@@ -55,18 +54,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 "id integer primary key autoincrement," +
                 "type text," +
                 "time text," +
-                "comment text,"+
+                "comment text," +
                 "money float)");
 
         sqLiteDatabase.execSQL("CREATE TABLE " + TABLE_NAME_INCOME + " (" +
                 "id integer primary key autoincrement," +
                 "type text," +
                 "time text," +
-                "comment text,"+
+                "comment text," +
                 "money float)");
     }
 
-    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1){
+    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
 
     }
 
@@ -76,7 +75,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         //update the time of one order
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put("time",time);
+        contentValues.put("time", time);
 
         sqLiteDatabase.update(table, contentValues, "orderNum=?", new String[]{String.valueOf(num)});
     }
@@ -91,7 +90,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         sqLiteDatabase.update(table, contentValues, "orderNum=?", new String[]{String.valueOf(num)});
     }
 
-    public void updateComment(String table, int num, String comment){
+    public void updateComment(String table, int num, String comment) {
 
         //update the comment of one order
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
@@ -101,7 +100,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         sqLiteDatabase.update(table, contentValues, "orderNum=?", new String[]{String.valueOf(num)});
     }
 
-    public void updateMoney(String table, int num, float money){
+    public void updateMoney(String table, int num, float money) {
 
         //update the money of one order
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
@@ -111,7 +110,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         sqLiteDatabase.update(table, contentValues, "orderNum=?", new String[]{String.valueOf(num)});
     }
 
-    public void deleteOneOrder(String table, int num){
+    public void deleteOneOrder(String table, int num) {
         //delete one order from database
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         sqLiteDatabase.delete(table, "orderNum=?", new String[]{String.valueOf(num)});
