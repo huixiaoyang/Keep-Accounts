@@ -150,7 +150,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void setBudget(String month, float money) {
         Cursor cursor = readData("budget");
         cursor.moveToLast();
-        DateFormat formatter = new SimpleDateFormat("YYYY-MM");
+        DateFormat formatter = new SimpleDateFormat("yyyy-MM");
         Calendar calendar = Calendar.getInstance();
         calendar.setTimeInMillis(System.currentTimeMillis());
         String time = formatter.format(calendar.getTime());

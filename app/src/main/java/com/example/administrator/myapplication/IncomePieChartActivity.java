@@ -151,7 +151,7 @@ public class IncomePieChartActivity extends AppCompatActivity implements OnChart
 
     //使用数据
     private void setData(ArrayList<PieEntry> entries) {
-        PieDataSet dataSet = new PieDataSet(entries, "March Income");
+        PieDataSet dataSet = new PieDataSet(entries, "Income");
         dataSet.setSliceSpace(3f);
         dataSet.setSelectionShift(5f);
 

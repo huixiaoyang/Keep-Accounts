@@ -58,10 +58,9 @@ public class MainActivity extends AppCompatActivity {
 
         Cursor budget = databaseHelper.readData("budget");
         budget.moveToLast();
-        DateFormat formatter = new SimpleDateFormat("YYYY-MM");
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTimeInMillis(System.currentTimeMillis());
-        String time = formatter.format(calendar.getTime());
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM");
+        Date curDate = new Date(System.currentTimeMillis());
+        String time = formatter.format(curDate);
         spend = getSpend(time);
         float income = getIncome(time);
         if (budget.getCount() != 0) {
@@ -139,7 +138,7 @@ public class MainActivity extends AppCompatActivity {
             public int compare(Map<String, Object> o1, Map<String, Object> o2) {
                 String time1 = o1.get("text_date").toString();
                 String time2 = o2.get("text_date").toString();
-                SimpleDateFormat sdf = new SimpleDateFormat("YYYY-MM-DD HH:MM");
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:MM");
                 Date bt = null;
                 Date et = null;
                 try {
@@ -149,9 +148,9 @@ public class MainActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
                 if (bt.before(et))
-                    return 1;
-                else
                     return -1;
+                else
+                    return 1;
             }
         });
         return dataList;
@@ -239,13 +238,12 @@ public class MainActivity extends AppCompatActivity {
         ActivityCompat.requestPermissions(MainActivity.this,
                 new String[]{Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE},
                 1);
-        int permission = ContextCompat.checkSelfPermission(this,Manifest.permission.CAMERA);
-        if(permission != PackageManager.PERMISSION_GRANTED){
+        int permission = ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA);
+        if (permission != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(MainActivity.this,
                     new String[]{Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE},
                     1);
-        }
-        else{
+        } else {
             Intent intent = new Intent(MainActivity.this, CaptureActivity.class);
             startActivityForResult(intent, 111);
         }
@@ -253,20 +251,24 @@ public class MainActivity extends AppCompatActivity {
 
     public void setBudget(View view) {
         Intent intent = new Intent(this, BudgetActivity.class);
-        intent.putExtra("spending",String.valueOf(spend));
+        intent.putExtra("spending", String.valueOf(spend));
         startActivity(intent);
     }
 
-    public void onActivityResult(int requestCode, int resultCode, Intent data){
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 111 && resultCode == RESULT_OK) {
             if (data != null) {
                 String content = data.getStringExtra(Constant.CODED_CONTENT);
-                Intent intent=new Intent(this, AddByQRActiviry.class);
+                Intent intent = new Intent(this, AddByQRActiviry.class);
                 intent.putExtra("data", content);
-                Log.e("data",content);
                 startActivity(intent);
             }
         }
+    }
+
+    public void clk_income(View view) {
+        //close this activity and open the AddIncomeRecordsActivity
+        startActivity(new Intent(this, AddIncomeRecordsActivity.class));
     }
 }
