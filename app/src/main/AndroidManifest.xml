@@ -30,8 +30,10 @@
         <activity
             android:name=".IncomePieChartActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".AddByQRActiviry" />
-        <activity android:name=".BudgetActivity"></activity>
+        <activity android:name=".AddByQRActiviry"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".BudgetActivity"
+            android:screenOrientation="portrait"></activity>
         <activity
             android:name="zxing.android.CaptureActivity"
             android:screenOrientation="portrait"

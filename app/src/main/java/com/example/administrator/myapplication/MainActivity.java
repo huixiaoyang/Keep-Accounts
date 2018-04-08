@@ -58,10 +58,9 @@ public class MainActivity extends AppCompatActivity {
 
         Cursor budget = databaseHelper.readData("budget");
         budget.moveToLast();
-        DateFormat formatter = new SimpleDateFormat("YYYY-MM");
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTimeInMillis(System.currentTimeMillis());
-        String time = formatter.format(calendar.getTime());
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM");
+        Date curDate = new Date(System.currentTimeMillis());
+        String time = formatter.format(curDate);
         spend = getSpend(time);
         float income = getIncome(time);
         if (budget.getCount() != 0) {
@@ -139,7 +138,7 @@ public class MainActivity extends AppCompatActivity {
             public int compare(Map<String, Object> o1, Map<String, Object> o2) {
                 String time1 = o1.get("text_date").toString();
                 String time2 = o2.get("text_date").toString();
-                SimpleDateFormat sdf = new SimpleDateFormat("YYYY-MM-DD HH:MM");
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:MM");
                 Date bt = null;
                 Date et = null;
                 try {
@@ -149,9 +148,9 @@ public class MainActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
                 if (bt.before(et))
-                    return 1;
-                else
                     return -1;
+                else
+                    return 1;
             }
         });
         return dataList;
@@ -264,7 +263,6 @@ public class MainActivity extends AppCompatActivity {
                 String content = data.getStringExtra(Constant.CODED_CONTENT);
                 Intent intent=new Intent(this, AddByQRActiviry.class);
                 intent.putExtra("data", content);
-                Log.e("data",content);
                 startActivity(intent);
             }
         }

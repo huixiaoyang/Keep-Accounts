@@ -66,13 +66,13 @@ public class AddByQRActiviry extends AppCompatActivity {
             }, 1000);
             finish();
         }
-        Map<String, Object> map = new HashMap<String, Object>();
         try {
             JSONObject root = new JSONObject(data);
             ((TextView) findViewById(R.id.tx_date)).setText(root.getString("date"));
             JSONArray book = root.getJSONArray("book");
             JSONObject b;
             for (int i = 0; i < book.length(); i++) {
+                Map<String, Object> map = new HashMap<String, Object>();
                 b = book.getJSONObject(i);
                 map.put("image_type", R.drawable.book_sel);
                 map.put("text_type", "book");
@@ -80,13 +80,13 @@ public class AddByQRActiviry extends AppCompatActivity {
                 map.put("text_money", b.getString("money"));
                 total += Float.valueOf(b.getString("money"));
                 dataList.add(map);
-                Map m = dataList.get(0);
-                Log.e("data", m.get("text_type_detail").toString());
             }
+
         } catch (JSONException e) {
             e.printStackTrace();
         }
         ((TextView) findViewById(R.id.tx_total_money)).setText(String.valueOf(total));
+
         return dataList;
     }
 
