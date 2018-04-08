@@ -53,8 +53,7 @@ public class AddByQRActiviry extends AppCompatActivity {
         data = getIntent().getExtras().getString("data");
         if (data.indexOf("date") != -1) {
 
-        }
-        else{
+        } else {
             AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.instance);
             builder.setMessage("No data");
             final AlertDialog alert = builder.show();

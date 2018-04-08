@@ -67,8 +67,8 @@
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="61dp"
-            android:textSize="30dp"
-            android:text="Set Your Budget" />
+            android:text="Set Your Budget"
+            android:textSize="30dp" />
     </RelativeLayout>
 
 </android.support.constraint.ConstraintLayout>

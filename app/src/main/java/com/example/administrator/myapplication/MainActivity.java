@@ -238,13 +238,12 @@ public class MainActivity extends AppCompatActivity {
         ActivityCompat.requestPermissions(MainActivity.this,
                 new String[]{Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE},
                 1);
-        int permission = ContextCompat.checkSelfPermission(this,Manifest.permission.CAMERA);
-        if(permission != PackageManager.PERMISSION_GRANTED){
+        int permission = ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA);
+        if (permission != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(MainActivity.this,
                     new String[]{Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE},
                     1);
-        }
-        else{
+        } else {
             Intent intent = new Intent(MainActivity.this, CaptureActivity.class);
             startActivityForResult(intent, 111);
         }
@@ -252,19 +251,24 @@ public class MainActivity extends AppCompatActivity {
 
     public void setBudget(View view) {
         Intent intent = new Intent(this, BudgetActivity.class);
-        intent.putExtra("spending",String.valueOf(spend));
+        intent.putExtra("spending", String.valueOf(spend));
         startActivity(intent);
     }
 
-    public void onActivityResult(int requestCode, int resultCode, Intent data){
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 111 && resultCode == RESULT_OK) {
             if (data != null) {
                 String content = data.getStringExtra(Constant.CODED_CONTENT);
-                Intent intent=new Intent(this, AddByQRActiviry.class);
+                Intent intent = new Intent(this, AddByQRActiviry.class);
                 intent.putExtra("data", content);
                 startActivity(intent);
             }
         }
+    }
+
+    public void clk_income(View view) {
+        //close this activity and open the AddIncomeRecordsActivity
+        startActivity(new Intent(this, AddIncomeRecordsActivity.class));
     }
 }
