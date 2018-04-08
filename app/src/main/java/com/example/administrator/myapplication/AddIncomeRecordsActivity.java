@@ -2,8 +2,11 @@ package com.example.administrator.myapplication;
 
 
 import android.content.Intent;
+import android.os.Handler;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -12,6 +15,7 @@ import android.widget.ImageButton;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 
 /**
  * Created by Administrator on 2018\3\30 0030.
@@ -23,7 +27,6 @@ public class AddIncomeRecordsActivity extends AppCompatActivity {
     private int[] imageButtonId;
     private DatabaseHelper databaseHelper;
 
-    public static String TABLE_NAME_SPENDING = "acounts";
     public static String TABLE_NAME_INCOME = "income";
 
 
@@ -46,25 +49,33 @@ public class AddIncomeRecordsActivity extends AppCompatActivity {
 
     public void clk_spending(View view) {
         //to do when the button is clicked
-        Intent itent = new Intent();
-        itent.setClass(AddIncomeRecordsActivity.this, AddSpendingRecordsActivity.class);
-        startActivity(itent);
-        AddIncomeRecordsActivity.this.finish();
+        startActivity(new Intent(this, AddSpendingRecordsActivity.class));
+        finish();
     }
 
     public void clk_cancel(View view) {
-        AddIncomeRecordsActivity.this.finish();
+        finish();
     }
 
     public void clk_ok(View view) {
         //add to the database, then close this activity
-
-        String type = (findViewById(R.id.btn_selected)).getContentDescription().toString();
-        DateFormat formatter = new SimpleDateFormat("YYYY-MM-DD HH:MM:SS.SSS");
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTimeInMillis(System.currentTimeMillis());
-        String time = formatter.format(calendar.getTime());
-        String comment = "dinner";
+        if (TextUtils.isEmpty(((EditText) findViewById(R.id.et_money)).getText())) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setMessage("Please input money");
+            final AlertDialog alert = builder.show();
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    alert.dismiss();
+                }
+            }, 1000);
+            return;
+        }
+        String type = ((ImageButton) findViewById(R.id.btn_selected)).getContentDescription().toString();
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:MM");
+        Date curDate = new Date(System.currentTimeMillis());
+        String time = formatter.format(curDate);
+        String comment = ((EditText) findViewById(R.id.et_comment)).getText().toString();
         float money = Float.valueOf(((EditText) findViewById(R.id.et_money)).getText().toString());
         boolean dataInserted = databaseHelper.insertData(TABLE_NAME_INCOME, type, time, comment, money);
         if (dataInserted = true) {
@@ -75,15 +86,14 @@ public class AddIncomeRecordsActivity extends AppCompatActivity {
 
         //close this activity
         MainActivity.instance.recreate();
-
-        AddIncomeRecordsActivity.this.finish();
+        finish();
     }
 
     public void clk_select(View view) {
         ImageButton imageButtonSelect = (ImageButton) view;
         imageButtonSelect.setImageResource(imageIdUseMulticolor[(Integer.valueOf(view.getTag().toString()))]);
 
-        ImageButton imageButtonShow = findViewById(R.id.btn_selected);
+        ImageButton imageButtonShow = (ImageButton) findViewById(R.id.btn_selected);
         imageButtonShow.setImageResource(imageIdUseMulticolor[(Integer.valueOf(view.getTag().toString()))]);
         imageButtonShow.setContentDescription(imageButtonSelect.getContentDescription());
 

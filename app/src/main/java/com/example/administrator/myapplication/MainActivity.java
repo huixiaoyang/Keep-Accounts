@@ -1,15 +1,26 @@
 package com.example.administrator.myapplication;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.TextView;
 
+import com.yzq.zxinglibrary.android.CaptureActivity;
+import com.yzq.zxinglibrary.common.Constant;
+
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
@@ -26,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
     private DatabaseHelper databaseHelper;
     public static String TABLE_NAME_SPENDING = "acounts";
     public static String TABLE_NAME_INCOME = "income";
+    float spend;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +55,52 @@ public class MainActivity extends AppCompatActivity {
                 new int[]{R.id.tv_date, R.id.imageview_type, R.id.tv_type, R.id.tv_type_detail, R.id.tv_money});
         // 3. 视图(ListView)加载适配器
         listView.setAdapter(sim_aAdapter);
+
+        Cursor budget = databaseHelper.readData("budget");
+        budget.moveToLast();
+        DateFormat formatter = new SimpleDateFormat("YYYY-MM");
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(System.currentTimeMillis());
+        String time = formatter.format(calendar.getTime());
+        spend = getSpend(time);
+        float income = getIncome(time);
+        if (budget.getCount() != 0) {
+
+            if (budget.getString(1).substring(0, 7).equals(time)) {
+                float left = Float.valueOf(budget.getString(2)) - spend;
+                ((TextView) findViewById(R.id.btn_total_money)).setText(String.valueOf(left));
+            }
+        }
+        ((TextView) findViewById(R.id.tv_month_income)).setText(String.valueOf(income));
+        ((TextView) findViewById(R.id.tv_month_spend)).setText(String.valueOf(spend));
+    }
+
+    private float getSpend(String month) {
+        //get all money spent this month
+        Cursor cursor = databaseHelper.readData("acounts");
+        float spend = 0;
+        if (cursor.getCount() == 0)
+            return spend;
+        while (cursor.moveToNext()) {
+            String date = cursor.getString(2).substring(0, 7);
+            if (date.equals(month))
+                spend += Float.valueOf(cursor.getString(4));
+        }
+        return spend;
+    }
+
+    private float getIncome(String month) {
+        //get all money spent this month
+        Cursor cursor = databaseHelper.readData("income");
+        float income = 0;
+        if (cursor.getCount() == 0)
+            return income;
+        while (cursor.moveToNext()) {
+            String date = cursor.getString(2).substring(0, 7);
+            if (date.equals(month))
+                income += Float.valueOf(cursor.getString(4));
+        }
+        return income;
     }
 
     private List<Map<String, Object>> getData(String table) {
@@ -75,12 +133,13 @@ public class MainActivity extends AppCompatActivity {
 
         }
 
+        //sort by time
         Collections.sort(dataList, new Comparator<Map<String, Object>>() {
             @Override
             public int compare(Map<String, Object> o1, Map<String, Object> o2) {
                 String time1 = o1.get("text_date").toString();
                 String time2 = o2.get("text_date").toString();
-                SimpleDateFormat sdf = new SimpleDateFormat("YYYY-MM-DD HH:MM:SS.SSS");
+                SimpleDateFormat sdf = new SimpleDateFormat("YYYY-MM-DD HH:MM");
                 Date bt = null;
                 Date et = null;
                 try {
@@ -100,7 +159,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void btnAddSpendingRecords(View view) {
         //to do when the button is clicked
-        startActivity(new Intent(MainActivity.this, AddSpendingRecordsActivity.class));
+        startActivity(new Intent(this, AddSpendingRecordsActivity.class));
     }
 
     public int getIdSpending(String type) {
@@ -173,6 +232,41 @@ public class MainActivity extends AppCompatActivity {
 
     public void btnSpendingPieChart(View view) {
         //to do when the button is clicked
-        startActivity(new Intent(MainActivity.this, SpendingPieChartActivity.class));
+        startActivity(new Intent(this, SpendingPieChartActivity.class));
+    }
+
+    public void btnAddByQR(View view) {
+        ActivityCompat.requestPermissions(MainActivity.this,
+                new String[]{Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                1);
+        int permission = ContextCompat.checkSelfPermission(this,Manifest.permission.CAMERA);
+        if(permission != PackageManager.PERMISSION_GRANTED){
+            ActivityCompat.requestPermissions(MainActivity.this,
+                    new String[]{Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                    1);
+        }
+        else{
+            Intent intent = new Intent(MainActivity.this, CaptureActivity.class);
+            startActivityForResult(intent, 111);
+        }
+    }
+
+    public void setBudget(View view) {
+        Intent intent = new Intent(this, BudgetActivity.class);
+        intent.putExtra("spending",String.valueOf(spend));
+        startActivity(intent);
+    }
+
+    public void onActivityResult(int requestCode, int resultCode, Intent data){
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 111 && resultCode == RESULT_OK) {
+            if (data != null) {
+                String content = data.getStringExtra(Constant.CODED_CONTENT);
+                Intent intent=new Intent(this, AddByQRActiviry.class);
+                intent.putExtra("data", content);
+                Log.e("data",content);
+                startActivity(intent);
+            }
+        }
     }
 }

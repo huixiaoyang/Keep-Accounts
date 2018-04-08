@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.SpannableString;
 import android.view.View;
-import android.widget.Toast;
 
 import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.PieChart;
@@ -23,15 +22,15 @@ import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 import com.github.mikephil.charting.utils.ColorTemplate;
 
 import java.util.ArrayList;
+
 /**
  * Created by Administrator on 2018\4\6 0006.
  */
 
-public class IncomePieChartActivity extends AppCompatActivity implements OnChartValueSelectedListener{
+public class IncomePieChartActivity extends AppCompatActivity implements OnChartValueSelectedListener {
 
     private PieChart mPieChart;
     private DatabaseHelper databaseHelper;
-    public static String TABLE_NAME_SPENDING = "acounts";
     public static String TABLE_NAME_INCOME = "income";
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,11 +43,14 @@ public class IncomePieChartActivity extends AppCompatActivity implements OnChart
 
     public void btnReturnMain(View view) {
         //to do when the button is clicked
-        startActivity(new Intent(IncomePieChartActivity.this,MainActivity.class));
+        startActivity(new Intent(this, MainActivity.class));
+        finish();
     }
+
     public void btnReturnSpending(View view) {
         //to do when the button is clicked
-        startActivity(new Intent(IncomePieChartActivity.this,SpendingPieChartActivity.class));
+        startActivity(new Intent(this, SpendingPieChartActivity.class));
+        finish();
     }
 
     private void initChart() {
@@ -93,7 +95,7 @@ public class IncomePieChartActivity extends AppCompatActivity implements OnChart
         l.setYOffset(0f);
 
         // 设置每块扇形中文字标签样式
-        mPieChart.setEntryLabelColor(Color.BLACK );
+        mPieChart.setEntryLabelColor(Color.BLACK);
         mPieChart.setEntryLabelTextSize(12f);
     }
 
@@ -104,10 +106,10 @@ public class IncomePieChartActivity extends AppCompatActivity implements OnChart
     }
 
     //从数据库中获取数据
-    private void getData(ArrayList<PieEntry> entries){
+    private void getData(ArrayList<PieEntry> entries) {
         Cursor cursor = databaseHelper.readData(TABLE_NAME_INCOME);
-        if(cursor.getCount()!=0) {
-            int[] intMoney = new int[50];
+        if (cursor.getCount() != 0) {
+            float[] intMoney = new float[50];
             String[] strType = new String[50];
             int flag = 1;
 
@@ -116,7 +118,7 @@ public class IncomePieChartActivity extends AppCompatActivity implements OnChart
 
                 String tempType = cursor.getString(1);
                 String tempMoney = cursor.getString(4);
-                int tempIntMoney = Integer.valueOf(tempMoney).intValue();
+                float tempIntMoney = Float.valueOf(tempMoney);
                 strType[0] = tempType;
                 intMoney[0] = tempIntMoney;
 
@@ -136,8 +138,7 @@ public class IncomePieChartActivity extends AppCompatActivity implements OnChart
                     ++flag;
                 }
             }
-            //Toast.makeText(this,Integer.toString(strType.length), Toast.LENGTH_SHORT).show();
-            int totalmoney = 0;
+            float totalmoney = 0;
             for (int i = 0; i < flag; i++)
                 totalmoney = totalmoney + intMoney[i];
             for (int i = 0; i < flag; i++) {

@@ -1,0 +1,8 @@
+﻿{"date": "2018-04-07 12:21",
+"food": [
+{"comment": "egg","money": "10"
+ },{ "comment": "fish", "money": "50" },
+{"comment": "apple","money": "20"}],
+"drink": [
+{"comment": "juice","money": "10"},{"comment": "coca cola", "money": "3.5"},
+{ "comment": "bear","money": "5"}]}

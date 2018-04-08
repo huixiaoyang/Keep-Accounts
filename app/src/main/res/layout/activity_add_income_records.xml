@@ -77,9 +77,11 @@
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
-            android:inputType="numberDecimal"
-            android:digits="1234567890"
+            android:digits="1234567890."
+            android:inputType="number"
+            android:maxLength="5"
             android:singleLine="true"
+            android:text=""
             android:textColor="#000000"
             android:textSize="40sp" />
     </RelativeLayout>
@@ -195,6 +197,31 @@
         android:layout_height="0dp"
         android:layout_weight="2"
         android:orientation="horizontal">
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:padding="2dp"
+            android:text="comment:" />
+
+        <EditText
+            android:id="@+id/et_comment"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="4"
+            android:maxLength="20" />
+
 
     </LinearLayout>
 
