@@ -7,66 +7,68 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_weight="1"
-        android:layout_height="0dp">
+        android:layout_height="0dp"
+        android:layout_weight="1">
 
         <ImageButton
             android:id="@+id/btn_cancel"
+            style="@style/Base.Widget.AppCompat.Button.Borderless"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_alignBottom="@+id/btn_ok"
             android:layout_alignParentStart="true"
             android:layout_marginStart="11dp"
             android:background="@drawable/button_selector"
-            style="@style/Base.Widget.AppCompat.Button.Borderless"
-            android:scaleType="centerCrop"
             android:onClick="clk_cancel"
+            android:scaleType="centerCrop"
             android:src="@drawable/cancel" />
+
         <Button
+            android:id="@+id/btn_income"
+            style="@style/Base.Widget.AppCompat.Button.Borderless"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Income"
             android:layout_marginLeft="100dp"
             android:background="@android:color/darker_gray"
-            style="@style/Base.Widget.AppCompat.Button.Borderless"
-            android:id="@+id/btn_income"/>
+            android:text="Income" />
 
         <ImageButton
             android:id="@+id/btn_ok"
+            style="@style/Base.Widget.AppCompat.Button.Borderless"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_alignParentRight="true"
             android:layout_marginRight="10dp"
             android:background="@drawable/button_selector"
-            style="@style/Base.Widget.AppCompat.Button.Borderless"
-            android:scaleType="centerCrop"
             android:onClick="clk_ok"
+            android:scaleType="centerCrop"
             android:src="@drawable/ok" />
+
         <Button
+            android:id="@+id/btn_spending"
+            style="@style/Base.Widget.AppCompat.Button.Borderless"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_toRightOf="@+id/btn_income"
-            android:text="Spending"
-            android:id="@+id/btn_spending"
-            style="@style/Base.Widget.AppCompat.Button.Borderless"
-            android:onClick="clk_spending"/>
+            android:onClick="clk_spending"
+            android:text="Spending" />
     </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_weight="2"
-        android:layout_height="0dp">
+        android:layout_height="0dp"
+        android:layout_weight="2">
 
         <ImageButton
             android:id="@+id/btn_selected"
+            style="@style/Base.Widget.AppCompat.Button.Borderless"
             android:layout_width="75dp"
             android:layout_height="70dp"
             android:layout_alignParentStart="true"
             android:layout_centerVertical="true"
             android:layout_marginStart="12dp"
-            android:scaleType="centerCrop"
             android:contentDescription="salary"
-            style="@style/Base.Widget.AppCompat.Button.Borderless"
+            android:scaleType="centerCrop"
             android:src="@drawable/salary_sel" />
 
         <EditText
@@ -75,8 +77,10 @@
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
-            android:singleLine="true"
             android:digits="1234567890."
+            android:inputType="number"
+            android:maxLength="5"
+            android:singleLine="true"
             android:text=""
             android:textColor="#000000"
             android:textSize="40sp" />
@@ -84,107 +88,140 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_weight="2"
         android:layout_height="0dp"
+        android:layout_weight="2"
         android:orientation="horizontal">
+
         <ImageButton
             android:id="@+id/btn_salary"
+            style="@style/Base.Widget.AppCompat.Button.Borderless"
             android:layout_width="0dp"
             android:layout_height="70dp"
-            android:layout_weight="1"
-            android:scaleType="centerCrop"
             android:layout_margin="10dp"
+            android:layout_weight="1"
             android:contentDescription="salary"
-            style="@style/Base.Widget.AppCompat.Button.Borderless"
             android:onClick="clk_select"
-            android:tag="0"
-            android:src="@drawable/salary_sel" />
+            android:scaleType="centerCrop"
+            android:src="@drawable/salary_sel"
+            android:tag="0" />
+
         <ImageButton
             android:id="@+id/btn_lend"
+            style="@style/Base.Widget.AppCompat.Button.Borderless"
             android:layout_width="0dp"
             android:layout_height="70dp"
-            android:layout_weight="1"
             android:layout_margin="10dp"
-            android:scaleType="centerCrop"
+            android:layout_weight="1"
             android:contentDescription="lend"
-            style="@style/Base.Widget.AppCompat.Button.Borderless"
             android:onClick="clk_select"
-            android:tag="1"
-            android:src="@drawable/lend_money_unsel"/>
+            android:scaleType="centerCrop"
+            android:src="@drawable/lend_money_unsel"
+            android:tag="1" />
+
         <ImageButton
             android:id="@+id/btn_red"
+            style="@style/Base.Widget.AppCompat.Button.Borderless"
             android:layout_width="0dp"
             android:layout_height="70dp"
-            android:layout_weight="1"
             android:layout_margin="10dp"
-            android:scaleType="centerCrop"
+            android:layout_weight="1"
             android:contentDescription="red envelope"
-            style="@style/Base.Widget.AppCompat.Button.Borderless"
             android:onClick="clk_select"
-            android:tag="2"
-            android:src="@drawable/red_envelope_unsel"/>
+            android:scaleType="centerCrop"
+            android:src="@drawable/red_envelope_unsel"
+            android:tag="2" />
+
         <ImageButton
             android:id="@+id/btn_pocket_money"
+            style="@style/Base.Widget.AppCompat.Button.Borderless"
             android:layout_width="0dp"
             android:layout_height="70dp"
-            android:layout_weight="1"
             android:layout_margin="10dp"
-            android:scaleType="centerCrop"
+            android:layout_weight="1"
             android:contentDescription="pocket money"
-            style="@style/Base.Widget.AppCompat.Button.Borderless"
             android:onClick="clk_select"
-            android:tag="3"
-            android:src="@drawable/pocket_money_unsel"/>
+            android:scaleType="centerCrop"
+            android:src="@drawable/pocket_money_unsel"
+            android:tag="3" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_weight="2"
         android:layout_height="0dp"
+        android:layout_weight="2"
         android:orientation="horizontal">
+
         <ImageButton
             android:id="@+id/btn_lottery_ticket"
+            style="@style/Base.Widget.AppCompat.Button.Borderless"
             android:layout_width="0dp"
             android:layout_height="70dp"
-            android:layout_weight="1"
             android:layout_margin="10dp"
-            android:scaleType="centerCrop"
+            android:layout_weight="1"
             android:contentDescription="lottery ticket"
-            style="@style/Base.Widget.AppCompat.Button.Borderless"
             android:onClick="clk_select"
-            android:tag="4"
-            android:src="@drawable/lottery_ticket_unsel"/>
+            android:scaleType="centerCrop"
+            android:src="@drawable/lottery_ticket_unsel"
+            android:tag="4" />
+
         <ImageButton
             android:id="@+id/btn_red_envelope"
             android:layout_width="0dp"
             android:layout_height="70dp"
-            android:layout_weight="1"
             android:layout_margin="10dp"
+            android:layout_weight="1"
             android:scaleType="centerCrop"
-            android:visibility="invisible"/>
+            android:visibility="invisible" />
+
         <ImageButton
             android:id="@+id/btn_phone_top_up"
             android:layout_width="0dp"
             android:layout_height="70dp"
-            android:layout_weight="1"
             android:layout_margin="10dp"
+            android:layout_weight="1"
             android:scaleType="centerCrop"
-            android:visibility="invisible"/>
+            android:visibility="invisible" />
+
         <ImageButton
             android:id="@+id/btn_recreation"
             android:layout_width="0dp"
             android:layout_height="70dp"
-            android:layout_weight="1"
             android:layout_margin="10dp"
-            android:visibility="invisible"/>
+            android:layout_weight="1"
+            android:visibility="invisible" />
     </LinearLayout>
 
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_weight="2"
         android:layout_height="0dp"
+        android:layout_weight="2"
         android:orientation="horizontal">
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:padding="2dp"
+            android:text="comment:" />
+
+        <EditText
+            android:id="@+id/et_comment"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="4"
+            android:maxLength="20" />
+
 
     </LinearLayout>
 

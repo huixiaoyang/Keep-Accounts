@@ -24,6 +24,7 @@ import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 import com.github.mikephil.charting.utils.ColorTemplate;
 
 import java.util.ArrayList;
+
 /**
  * Created by Administrator on 2018\4\6 0006.
  */
@@ -32,7 +33,6 @@ public class SpendingPieChartActivity extends AppCompatActivity implements OnCha
     private PieChart mPieChart;
     private DatabaseHelper databaseHelper;
     public static String TABLE_NAME_SPENDING = "acounts";
-    public static String TABLE_NAME_INCOME = "income";
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,11 +44,14 @@ public class SpendingPieChartActivity extends AppCompatActivity implements OnCha
 
     public void btnReturnMain(View view) {
         //to do when the button is clicked
-        startActivity(new Intent(SpendingPieChartActivity.this,MainActivity.class));
+        startActivity(new Intent(this, MainActivity.class));
+        finish();
     }
+
     public void btnReturnIncome(View view) {
         //to do when the button is clicked
-        startActivity(new Intent(SpendingPieChartActivity.this,IncomePieChartActivity.class));
+        startActivity(new Intent(this, IncomePieChartActivity.class));
+        finish();
     }
 
     private void initChart() {
@@ -93,20 +96,20 @@ public class SpendingPieChartActivity extends AppCompatActivity implements OnCha
         l.setYOffset(0f);
 
         // 设置每块扇形中文字标签样式
-        mPieChart.setEntryLabelColor(Color.BLACK );
+        mPieChart.setEntryLabelColor(Color.BLACK);
         mPieChart.setEntryLabelTextSize(12f);
     }
 
     //设置中间文字
     private SpannableString generateCenterSpannableText() {
-        SpannableString s = new SpannableString("March Spending");
+        SpannableString s = new SpannableString("Spending");
         return s;
     }
 
-    private void getData(ArrayList<PieEntry> entries){
+    private void getData(ArrayList<PieEntry> entries) {
         Cursor cursor = databaseHelper.readData(TABLE_NAME_SPENDING);
-        if(cursor.getCount()!=0) {
-            int[] intMoney = new int[50];
+        if (cursor.getCount() != 0) {
+            float[] intMoney = new float[50];
             String[] strType = new String[50];
             int flag = 1;
 
@@ -115,7 +118,7 @@ public class SpendingPieChartActivity extends AppCompatActivity implements OnCha
 
                 String tempType = cursor.getString(1);
                 String tempMoney = cursor.getString(4);
-                int tempIntMoney = Integer.valueOf(tempMoney).intValue();
+                float tempIntMoney = Float.valueOf(tempMoney);
                 strType[0] = tempType;
                 intMoney[0] = tempIntMoney;
 
@@ -123,7 +126,7 @@ public class SpendingPieChartActivity extends AppCompatActivity implements OnCha
                 while (cursor.moveToPrevious()) {
                     tempType = cursor.getString(1);
                     tempMoney = cursor.getString(4);
-                    tempIntMoney = Integer.valueOf(tempMoney).intValue();
+                    tempIntMoney = Float.valueOf(tempMoney);
                     for (int i = 0; i < flag; i++) {
                         if (strType[i].equals(tempType)) {
                             intMoney[i] = intMoney[i] + tempIntMoney;
@@ -136,7 +139,7 @@ public class SpendingPieChartActivity extends AppCompatActivity implements OnCha
                 }
             }
             //Toast.makeText(this,Integer.toString(strType.length), Toast.LENGTH_SHORT).show();
-            int totalmoney = 0;
+            float totalmoney = 0;
             for (int i = 0; i < flag; i++)
                 totalmoney = totalmoney + intMoney[i];
             for (int i = 0; i < flag; i++) {
@@ -148,7 +151,7 @@ public class SpendingPieChartActivity extends AppCompatActivity implements OnCha
     }
 
     private void setData(ArrayList<PieEntry> entries) {
-        PieDataSet dataSet = new PieDataSet(entries, "March Spending");
+        PieDataSet dataSet = new PieDataSet(entries, "Spending");
         dataSet.setSliceSpace(3f);
         dataSet.setSelectionShift(5f);
 
