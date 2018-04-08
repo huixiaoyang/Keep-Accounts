@@ -101,7 +101,7 @@ public class IncomePieChartActivity extends AppCompatActivity implements OnChart
 
     //设置中间文字
     private SpannableString generateCenterSpannableText() {
-        SpannableString s = new SpannableString("March Income");
+        SpannableString s = new SpannableString("Income");
         return s;
     }
 
